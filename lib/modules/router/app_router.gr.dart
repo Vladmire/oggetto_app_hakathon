@@ -17,12 +17,22 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    MainScreenRoute.name: (routeData) {
-      final args = routeData.argsAs<MainScreenRouteArgs>(
-          orElse: () => const MainScreenRouteArgs());
+    RegistrationScreenRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: MainScreen(key: args.key),
+        child: const RegistrationScreen(),
+      );
+    },
+    AuthorizationScreenRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const AuthorizationScreen(),
+      );
+    },
+    MainScreenRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const MainScreen(),
       );
     },
     EmployeesRouter.name: (routeData) {
@@ -102,6 +112,14 @@ class _$AppRouter extends RootStackRouter {
   @override
   List<RouteConfig> get routes => [
         RouteConfig(
+          RegistrationScreenRoute.name,
+          path: 'registration',
+        ),
+        RouteConfig(
+          AuthorizationScreenRoute.name,
+          path: 'authorization',
+        ),
+        RouteConfig(
           MainScreenRoute.name,
           path: 'main',
           children: [
@@ -172,35 +190,45 @@ class _$AppRouter extends RootStackRouter {
               ],
             ),
           ],
-        )
+        ),
       ];
 }
 
 /// generated route for
+/// [RegistrationScreen]
+class RegistrationScreenRoute extends PageRouteInfo<void> {
+  const RegistrationScreenRoute()
+      : super(
+          RegistrationScreenRoute.name,
+          path: 'registration',
+        );
+
+  static const String name = 'RegistrationScreenRoute';
+}
+
+/// generated route for
+/// [AuthorizationScreen]
+class AuthorizationScreenRoute extends PageRouteInfo<void> {
+  const AuthorizationScreenRoute()
+      : super(
+          AuthorizationScreenRoute.name,
+          path: 'authorization',
+        );
+
+  static const String name = 'AuthorizationScreenRoute';
+}
+
+/// generated route for
 /// [MainScreen]
-class MainScreenRoute extends PageRouteInfo<MainScreenRouteArgs> {
-  MainScreenRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
+class MainScreenRoute extends PageRouteInfo<void> {
+  const MainScreenRoute({List<PageRouteInfo>? children})
+      : super(
           MainScreenRoute.name,
           path: 'main',
-          args: MainScreenRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'MainScreenRoute';
-}
-
-class MainScreenRouteArgs {
-  const MainScreenRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'MainScreenRouteArgs{key: $key}';
-  }
 }
 
 /// generated route for
