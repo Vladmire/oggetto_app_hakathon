@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:oggetto_app_hakathon/styles/styles.dart';
+import 'managers/locator.dart';
 import 'modules/router/app_router.dart';
 
-void main() {
+void main() async {
+  await setupLocator();
   runApp(MyApp());
 }
 

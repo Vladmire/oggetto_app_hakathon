@@ -1,6 +1,7 @@
 {
     "peopleString": "People",
     "gamesString": "Games",
-    "profileString": "Profile"
+    "profileString": "Profile",
+    "oggettoNameString": "Oggetto"
 
 }

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,7 +31,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
             children: [
               BottomAppBar(
                 elevation: 0.0,
-                color: const Color(0xFFF2F5FC),
+                color: Color(0xFFFFF1BA),
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: 88.0,
