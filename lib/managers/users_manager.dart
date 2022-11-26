@@ -15,7 +15,6 @@ class UsersManager extends ChangeNotifier {
       login: 'abramova',
       password: 'aaaaaa',
       name: 'nadezhda',
-      surname: 'abramova',
       birthDate: 192929939,
       department: DepartmentType.backend,
     ),
@@ -24,7 +23,6 @@ class UsersManager extends ChangeNotifier {
       login: 'abramova',
       password: 'aaaaaa',
       name: 'nadezhda',
-      surname: 'abramova',
       birthDate: 192929939,
       department: DepartmentType.mobile,
     ),
@@ -33,7 +31,6 @@ class UsersManager extends ChangeNotifier {
       login: 'abramova',
       password: 'aaaaaa',
       name: 'nadezhda',
-      surname: 'abramova',
       birthDate: 192929939,
       department: DepartmentType.frontend,
     ),
@@ -42,7 +39,6 @@ class UsersManager extends ChangeNotifier {
       login: 'abramova',
       password: 'aaaaaa',
       name: 'nadezhda',
-      surname: 'abramova',
       birthDate: 192929939,
       department: DepartmentType.hr,
     ),
@@ -51,7 +47,6 @@ class UsersManager extends ChangeNotifier {
       login: 'abramova',
       password: 'aaaaaa',
       name: 'nadezhda',
-      surname: 'abramova',
       birthDate: 192929939,
       department: DepartmentType.ads,
     ),
@@ -60,7 +55,6 @@ class UsersManager extends ChangeNotifier {
       login: 'abramova',
       password: 'aaaaaa',
       name: 'nadezhda',
-      surname: 'abramova',
       birthDate: 192929939,
       department: DepartmentType.analytics,
     ),
@@ -69,7 +63,6 @@ class UsersManager extends ChangeNotifier {
       login: 'abramova',
       password: 'aaaaaa',
       name: 'nadezhda',
-      surname: 'abramova',
       birthDate: 192929939,
       department: DepartmentType.backend,
     ),
@@ -78,7 +71,6 @@ class UsersManager extends ChangeNotifier {
       login: 'abramova',
       password: 'aaaaaa',
       name: 'nadezhda',
-      surname: 'abramova',
       birthDate: 192929939,
       department: DepartmentType.backend,
     ),
@@ -87,7 +79,6 @@ class UsersManager extends ChangeNotifier {
       login: 'abramova',
       password: 'aaaaaa',
       name: 'nadezhda',
-      surname: 'abramova',
       birthDate: 192929939,
       department: DepartmentType.backend,
     ),
@@ -96,7 +87,6 @@ class UsersManager extends ChangeNotifier {
       login: 'abramova',
       password: 'aaaaaa',
       name: 'nadezhda',
-      surname: 'abramova',
       birthDate: 192929939,
       department: DepartmentType.backend,
     ),
@@ -105,7 +95,6 @@ class UsersManager extends ChangeNotifier {
       login: 'abramova',
       password: 'aaaaaa',
       name: 'nadezhda',
-      surname: 'abramova',
       birthDate: 192929939,
       department: DepartmentType.backend,
     ),
@@ -114,7 +103,6 @@ class UsersManager extends ChangeNotifier {
       login: 'abramova',
       password: 'aaaaaa',
       name: 'nadezhda',
-      surname: 'abramova',
       birthDate: 192929939,
       department: DepartmentType.teamLeading,
     ),
@@ -123,7 +111,6 @@ class UsersManager extends ChangeNotifier {
       login: 'abramova',
       password: 'aaaaaa',
       name: 'nadezhda',
-      surname: 'abramova',
       birthDate: 192929939,
       department: DepartmentType.backend,
     ),
@@ -143,12 +130,17 @@ class UsersManager extends ChangeNotifier {
       login: login,
       password: password,
       name: name,
-      surname: surname,
       birthDate: birthDate,
       department: department,
     );
     _saveToUserFile(model);
     return model;
+  }
+
+  Future<List<UserModel>> getUsers() async {
+    var file = await _localUsersFile;
+    List<UserModel> users = await _readFromFile(file);
+    return users;
   }
 
   void _saveToUserFile(UserModel model) async {

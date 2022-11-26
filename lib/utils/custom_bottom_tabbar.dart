@@ -31,7 +31,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
             children: [
               BottomAppBar(
                 elevation: 0.0,
-                color: Color(0xFFFFF1BA),
+                color: const Color(0xFFFFF1BA),
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: 88.0,

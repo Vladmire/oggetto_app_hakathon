@@ -70,9 +70,13 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     DetailsScreenRoute.name: (routeData) {
+      final args = routeData.argsAs<DetailsScreenRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const DetailsScreen(),
+        child: DetailsScreen(
+          userModel: args.userModel,
+          key: args.key,
+        ),
       );
     },
     GamesScreenRoute.name: (routeData) {
@@ -322,14 +326,36 @@ class EmployeesScreenRouteArgs {
 
 /// generated route for
 /// [DetailsScreen]
-class DetailsScreenRoute extends PageRouteInfo<void> {
-  const DetailsScreenRoute()
-      : super(
+class DetailsScreenRoute extends PageRouteInfo<DetailsScreenRouteArgs> {
+  DetailsScreenRoute({
+    required UserModel userModel,
+    Key? key,
+  }) : super(
           DetailsScreenRoute.name,
           path: 'details',
+          args: DetailsScreenRouteArgs(
+            userModel: userModel,
+            key: key,
+          ),
         );
 
   static const String name = 'DetailsScreenRoute';
+}
+
+class DetailsScreenRouteArgs {
+  const DetailsScreenRouteArgs({
+    required this.userModel,
+    this.key,
+  });
+
+  final UserModel userModel;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'DetailsScreenRouteArgs{userModel: $userModel, key: $key}';
+  }
 }
 
 /// generated route for

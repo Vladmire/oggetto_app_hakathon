@@ -38,5 +38,36 @@ class AppTextStyles {
     letterSpacing: 0.5,
     color: Color(0xFF49454F),
   );
+  static const profileNameText = TextStyle(
+    fontWeight: FontWeight.w700,
+    fontSize: 16.0,
+    letterSpacing: 0.5,
+    color: Color(0xFF211B00),
+  );
+  static const profileSubtitle = TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: 14.0,
+    letterSpacing: 0.5,
+    color: Color(0xFF605200),
+  );
+  static const profileSectionTitle = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 19.0,
+    letterSpacing: 0.5,
+    color: Color(0xFF2D2500),
+  );
+  static const profileSubsectionTitle = TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: 16.0,
+    letterSpacing: 0.5,
+    color: Color(0xFF2D2500),
+  );
+  static const profileChipText = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 14.0,
+    letterSpacing: 0.5,
+    color: Color(0xFF393000),
+  );
+
 
 }

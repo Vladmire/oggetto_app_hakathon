@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:oggetto_app_hakathon/models/enums.dart';
 
@@ -10,8 +9,6 @@ class UserModel {
   String login;
   String password;
   String name;
-  String surname;
-  String? fatherName;
   DepartmentType department;
   WorkGrade? workGrade;
   String? project;
@@ -25,11 +22,9 @@ class UserModel {
     required this.login,
     required this.password,
     required this.name,
-    required this.surname,
     required this.birthDate,
     required this.department,
     this.project,
-    this.fatherName,
     this.workGrade,
     this.firstFact,
     this.secondFact,

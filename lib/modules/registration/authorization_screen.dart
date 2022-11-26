@@ -4,6 +4,7 @@ import 'package:oggetto_app_hakathon/modules/router/app_router.dart';
 import 'package:oggetto_app_hakathon/utils/images.dart';
 
 import '../../managers/locator.dart';
+import '../../managers/preference_manager.dart';
 import '../../utils/custom_widget_utils.dart';
 import '../../utils/localized_strings.dart';
 
@@ -15,6 +16,8 @@ class AuthorizationScreen extends StatefulWidget {
 }
 
 class _AuthorizationScreenState extends State<AuthorizationScreen> {
+
+  final PreferenceManager prefs = locator<PreferenceManager>();
   final CustomWidgetUtils _utils = locator<CustomWidgetUtils>();
   final TextEditingController _loginController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -25,7 +28,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
     return Scaffold(
       body: ListView(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 40.0,
           ),
           Padding(
@@ -45,11 +48,12 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                     controller: _loginController,
                     maxLines: 1,
                     textType: TextInputType.emailAddress,
+                    textInputAction: TextInputAction.next,
                     onChanged: _onChangedText,
                     validator: validator,
                     onTap: _onClearLogin,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15.0,
                   ),
                   _utils.createTextField(
@@ -59,11 +63,12 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                     controller: _passwordController,
                     maxLines: 1,
                     textType: TextInputType.visiblePassword,
+                    textInputAction: TextInputAction.done,
                     onChanged: _onChangedText,
                     validator: validator,
                     onTap: _onClearPassword,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40.0,
                   ),
                   TextButton(
@@ -71,14 +76,15 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                           () async => {
                         if (_formKey.currentState!.validate()) {
                           FocusScope.of(context).requestFocus(FocusNode()),
-                          context.router.push(MainScreenRoute()),
+                          context.router.replace(const MainScreenRoute()),
+
                         }
                     },
                     style: ButtonStyle(
                         padding: MaterialStateProperty.all(
                             const EdgeInsets.symmetric(vertical: 18)),
                         backgroundColor: MaterialStateProperty.all<Color>(
-                            Color(0xFFFFDD00)),
+                            const Color(0xFFFFDD00)),
                         minimumSize: MaterialStateProperty.all<Size>(
                             const Size(double.infinity, 58)),
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -95,8 +101,8 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                     Text(AppStrings.of(context).noAccountString),
-                    SizedBox(width: 5.0,),
-                    TextButton(onPressed: () => context.router.push(RegistrationScreenRoute()), child: Text(AppStrings.of(context).registerString)),
+                    const SizedBox(width: 5.0,),
+                    TextButton(onPressed: () => context.router.push(const RegistrationScreenRoute()), child: Text(AppStrings.of(context).registerString)),
                   ],)
                 ],
               ),

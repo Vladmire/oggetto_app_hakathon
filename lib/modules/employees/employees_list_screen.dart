@@ -35,7 +35,13 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('data'),
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.black,
+        elevation: 0,
+        centerTitle: true,
+        title: Text(AppStrings
+            .of(context)
+            .oggettoNameString),
       ),
       body: Column(
         children: [
@@ -94,13 +100,13 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
     List<Widget> listTiles = [];
     for (var element in departmentUsers) {
       Widget listTile = ListTile(
-        
-        onTap: () => context.router.push(DetailsScreenRoute()),
+
+        onTap: () => context.router.push(DetailsScreenRoute(userModel: element)),
         leading: CircleAvatar(
           backgroundImage: AppAssets.appIcon.image(),
           radius: 28.0,
         ),
-        title: Text('${element.name} ${element.surname}'),
+        title: Text(element.name),
         subtitle: Text(element.department.toString()),
         tileColor: Color(0xFFFFF9ED),
       );

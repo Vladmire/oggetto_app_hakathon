@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:oggetto_app_hakathon/utils/images.dart';
 
+import '../../models/user_model.dart';
+import '../../utils/localized_strings.dart';
+
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({Key? key}) : super(key: key);
+  const DetailsScreen({required this.userModel, Key? key}) : super(key: key);
+
+  final UserModel userModel;
 
   @override
   Widget build(BuildContext context) {
     double avatarRadius = MediaQuery.of(context).size.width / 4;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.black,
+        elevation: 0,
         centerTitle: true,
+        title: Text(AppStrings
+            .of(context)
+            .oggettoNameString),
       ),
       body: ListView(
         // crossAxisAlignment: CrossAxisAlignment.center,
@@ -20,10 +30,6 @@ class DetailsScreen extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 10.0),
               child: Container(
-                child: CircleAvatar(
-                  backgroundImage: AppAssets.profile.image(),
-                  radius: avatarRadius,
-                ),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
@@ -31,29 +37,32 @@ class DetailsScreen extends StatelessWidget {
                     width: 6.0,
                   ),
                 ),
+                child: CircleAvatar(
+                  backgroundImage: AppAssets.profile.image(),
+                  radius: avatarRadius,
+                ),
               ),
             ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text('surname'),
-              Text('name and fatherName'),
+              Text(userModel.name),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 6.0),
-                child: Text('19.09.1987'),
+                child: Text(DateTime.fromMillisecondsSinceEpoch(userModel.birthDate).toString()),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   Icon(Icons.place),
                   Text('Taganrog'),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 46.0,
               ),
-              Text('Frontend developer'),
+              Text(userModel.department.toString()),
             ],
           ),
           Column(
@@ -62,23 +71,23 @@ class DetailsScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Grade'),
-                  SizedBox(
+                  const Text('Grade'),
+                  const SizedBox(
                     width: 34.0,
                   ),
                   Chip(
-                    label: Text('Senior'),
+                    label: Text(userModel.workGrade.toString()),
                   ),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Project'),
-                  SizedBox(
+                  const Text('Project'),
+                  const SizedBox(
                     width: 34.0,
                   ),
-                  Chip(label: Text('Obi'))
+                  Chip(label: Text(userModel.project ?? ''))
                 ],
               ),
             ],

@@ -13,6 +13,7 @@ import 'package:oggetto_app_hakathon/modules/registration/authorization_screen.d
 import 'package:oggetto_app_hakathon/modules/registration/registration_screen.dart';
 
 import '../../models/enums.dart';
+import '../../models/user_model.dart';
 import '../employees/departments_screen.dart';
 import '../main_screen.dart';
 

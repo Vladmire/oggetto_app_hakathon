@@ -26,7 +26,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return Scaffold(
       body: ListView(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 40.0,
           ),
           Padding(
@@ -50,7 +50,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     validator: validator,
                     onTap: _onClearName,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15.0,
                   ),
                   _utils.createTextField(
@@ -64,7 +64,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     validator: validator,
                     onTap: _onClearLogin,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15.0,
                   ),
                   _utils.createTextField(
@@ -78,21 +78,21 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     validator: validator,
                     onTap: _onClearPassword,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40.0,
                   ),
                   TextButton(
                     onPressed: () async => {
                       if (_formKey.currentState!.validate()) {
                         FocusScope.of(context).requestFocus(FocusNode()),
-                        context.router.push(MainScreenRoute()),
+                        context.router.replace(const MainScreenRoute()),
                       }
                     },
                     style: ButtonStyle(
                         padding: MaterialStateProperty.all(
                             const EdgeInsets.symmetric(vertical: 18)),
                         backgroundColor:
-                            MaterialStateProperty.all<Color>(Color(0xFFFFDD00)),
+                            MaterialStateProperty.all<Color>(const Color(0xFFFFDD00)),
                         minimumSize: MaterialStateProperty.all<Size>(
                             const Size(double.infinity, 58)),
                         shape:
