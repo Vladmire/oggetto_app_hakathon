@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:oggetto_app_hakathon/models/enums.dart';
 import 'package:oggetto_app_hakathon/modules/router/app_router.dart';
+import 'package:oggetto_app_hakathon/styles/styles.dart';
 import 'package:oggetto_app_hakathon/utils/images.dart';
 
 import '../../managers/locator.dart';
@@ -27,26 +28,24 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery
-        .of(context)
-        .size
-        .width / 2 - 48;
+    double width = MediaQuery.of(context).size.width / 2 - 48;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.black,
         elevation: 0,
         centerTitle: true,
-        automaticallyImplyLeading: false,
-        title: Text(AppStrings
-            .of(context)
-            .oggettoNameString),
+        title: Image(
+          image: AppAssets.companyLogo.image(),
+          width: screenWidth / 3,
+        ),
       ),
       body: Column(
         children: [
           Padding(
             padding:
-            const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
             child: Form(
               key: _formKey,
               child: TextFormField(
@@ -57,11 +56,11 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
                 textInputAction: TextInputAction.done,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4.0)
-                  ),
+                      borderRadius: BorderRadius.circular(4.0)),
                   labelText: AppStrings.of(context).locationString,
-                  focusedBorder:OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.yellow, width: 2.0),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: Colors.yellow, width: 2.0),
                     borderRadius: BorderRadius.circular(4.0),
                   ),
                   // labelStyle: AppTextStyles.textFieldLabel,
@@ -70,17 +69,23 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
                   suffixIcon: _controller.text.isEmpty
                       ? null
                       : IconButton(
-                    onPressed: _onClearTap,
-                    icon: Icon(
-                      Icons.cancel_outlined,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                  ),
+                          onPressed: _onClearTap,
+                          icon: Icon(
+                            Icons.cancel_outlined,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
                 ),
               ),
             ),
           ),
-          Text('title'),
+          const Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Text(
+              'Отделы компании',
+              style: AppTextStyles.profileSectionTitle,
+            ),
+          ),
           Expanded(
             child: ListView(
               children: [
@@ -98,78 +103,109 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
     );
   }
 
-  List<Widget> _buildDepartments({required double width, required BuildContext context}) {
+  List<Widget> _buildDepartments(
+      {required double width, required BuildContext context}) {
     List<Widget> items = [];
     for (var element in DepartmentType.values) {
       switch (element) {
         case DepartmentType.backend:
-          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
+          Widget item = _buildDepartment(
+            onTap: () =>
+                context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
-            title: AppStrings.of(context).backendString,);
+            title: AppStrings.of(context).backendString,
+          );
           items.add(item);
           break;
         case DepartmentType.frontend:
-          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
+          Widget item = _buildDepartment(
+            onTap: () =>
+                context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
-            title: AppStrings.of(context).frontendString,);
+            title: AppStrings.of(context).frontendString,
+          );
           items.add(item);
           break;
         case DepartmentType.mobile:
-          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
+          Widget item = _buildDepartment(
+            onTap: () =>
+                context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
-            title: AppStrings.of(context).mobileString,);
+            title: AppStrings.of(context).mobileString,
+          );
           items.add(item);
           break;
         case DepartmentType.designs:
-          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
+          Widget item = _buildDepartment(
+            onTap: () =>
+                context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
-            title: AppStrings.of(context).designString,);
+            title: AppStrings.of(context).designString,
+          );
           items.add(item);
           break;
         case DepartmentType.teamLeading:
-          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
+          Widget item = _buildDepartment(
+            onTap: () =>
+                context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
-            title: AppStrings.of(context).teamleadingString,);
+            title: AppStrings.of(context).teamleadingString,
+          );
           items.add(item);
           break;
         case DepartmentType.analytics:
-          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
+          Widget item = _buildDepartment(
+            onTap: () =>
+                context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
-            title: AppStrings.of(context).analyticsString,);
+            title: AppStrings.of(context).analyticsString,
+          );
           items.add(item);
           break;
         case DepartmentType.accounting:
-          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
+          Widget item = _buildDepartment(
+            onTap: () =>
+                context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
-            title: AppStrings.of(context).accountingString,);
+            title: AppStrings.of(context).accountingString,
+          );
           items.add(item);
           break;
         case DepartmentType.hr:
-          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
+          Widget item = _buildDepartment(
+            onTap: () =>
+                context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
-            title: AppStrings.of(context).hrString,);
+            title: AppStrings.of(context).hrString,
+          );
           items.add(item);
           break;
         case DepartmentType.techSupport:
-          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
+          Widget item = _buildDepartment(
+            onTap: () =>
+                context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
-            title: AppStrings.of(context).techSupportString,);
+            title: AppStrings.of(context).techSupportString,
+          );
           items.add(item);
           break;
         case DepartmentType.ads:
-          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
+          Widget item = _buildDepartment(
+            onTap: () =>
+                context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
-            title: AppStrings.of(context).adsString,);
+            title: AppStrings.of(context).adsString,
+          );
           items.add(item);
           break;
       }
@@ -222,7 +258,7 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
 
   void _onClearTap() {
     setState(
-          () {
+      () {
         _controller.clear();
       },
     );

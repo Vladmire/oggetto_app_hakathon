@@ -7,6 +7,7 @@ import 'package:oggetto_app_hakathon/utils/localized_strings.dart';
 
 import '../../managers/locator.dart';
 import '../../models/user_model.dart';
+import '../../styles/styles.dart';
 import '../../utils/custom_widget_utils.dart';
 import 'package:oggetto_app_hakathon/utils/images.dart';
 
@@ -81,7 +82,13 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
               ),
             ),
           ),
-          Text('title'),
+          const Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Text(
+              'Сотрудники отдела',
+              style: AppTextStyles.profileSectionTitle,
+            ),
+          ),
           Expanded(
             child: _buildList(widget.department, _usersManager.users),
           )
