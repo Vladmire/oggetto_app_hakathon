@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:oggetto_app_hakathon/modules/router/app_router.dart';
+import 'package:oggetto_app_hakathon/utils/localized_strings.dart';
 
 import '../../managers/locator.dart';
 import '../../utils/custom_widget_utils.dart';
@@ -47,14 +48,14 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(4.0)
                   ),
-                  labelText: 'labelText',
+                  labelText: AppStrings.of(context).locationString,
                   focusedBorder:OutlineInputBorder(
                     borderSide: const BorderSide(color: Colors.yellow, width: 2.0),
                     borderRadius: BorderRadius.circular(4.0),
                   ),
                   // labelStyle: AppTextStyles.textFieldLabel,
                   floatingLabelBehavior: FloatingLabelBehavior.always,
-                  hintText: 'hintText',
+                  hintText: AppStrings.of(context).locationString,
                   suffixIcon: _controller.text.isEmpty
                       ? null
                       : IconButton(
@@ -68,7 +69,7 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
               ),
             ),
           ),
-
+          Text('title'),
           Expanded(
             child: _buildList(),
           )

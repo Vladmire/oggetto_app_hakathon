@@ -32,7 +32,7 @@ class CustomWidgetUtils {
         // style: AppTextStyles.inputText,
         maxLines: maxLines,
         onChanged: onChanged,
-        // validator: validator,
+        validator: validator,
         textInputAction: textInputAction,
         onEditingComplete: onEditingComplete,
         onFieldSubmitted: onFieldSubmitted,
@@ -40,6 +40,10 @@ class CustomWidgetUtils {
           border: const OutlineInputBorder(),
           labelText: labelText,
           // labelStyle: AppTextStyles.textFieldLabel,
+          focusedBorder:OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.yellow, width: 2.0),
+            borderRadius: BorderRadius.circular(4.0),
+          ),
           floatingLabelBehavior: FloatingLabelBehavior.always,
           hintText: hintText,
           suffixIcon: controller.text.isEmpty

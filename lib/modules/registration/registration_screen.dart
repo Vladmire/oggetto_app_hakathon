@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import '../../managers/locator.dart';
 import '../../utils/custom_widget_utils.dart';
 
 import '../../utils/images.dart';
 import '../../utils/localized_strings.dart';
+import '../router/app_router.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -14,6 +16,7 @@ class RegistrationScreen extends StatefulWidget {
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
   final CustomWidgetUtils _utils = locator<CustomWidgetUtils>();
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _loginController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -21,9 +24,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: ListView(
         children: [
+          SizedBox(
+            height: 40.0,
+          ),
           Padding(
             padding: const EdgeInsets.all(50.0),
             child: Image(image: AppAssets.companyLogo.image()),
@@ -34,98 +39,72 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
                 children: [
-                  TextFormField(
-                    controller: _loginController,
-                    // style: AppTextStyles.inputText,
+                  _utils.createTextField(
+                    context: context,
+                    labelText: AppStrings.of(context).nameString,
+                    hintText: AppStrings.of(context).nameString,
+                    controller: _nameController,
                     maxLines: 1,
+                    textType: TextInputType.name,
                     onChanged: _onChangedText,
-                    textInputAction: TextInputAction.done,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(4.0)
-                      ),
-                      labelText: AppStrings.of(context).emailString,
-                      focusedBorder:OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.yellow, width: 2.0),
-                        borderRadius: BorderRadius.circular(4.0),
-                      ),
-                      // labelStyle: AppTextStyles.textFieldLabel,
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: AppStrings.of(context).emailString,
-                      suffixIcon: _loginController.text.isEmpty
-                          ? null
-                          : IconButton(
-                        onPressed: _onClearLogin,
-                        icon: Icon(
-                          Icons.cancel_outlined,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                      ),
-                    ),
+                    validator: validator,
+                    onTap: _onClearName,
                   ),
                   SizedBox(
-                    height: 30.0,
+                    height: 15.0,
                   ),
-                  TextFormField(
-                    controller: _passwordController,
-                    // style: AppTextStyles.inputText,
+                  _utils.createTextField(
+                    context: context,
+                    labelText: AppStrings.of(context).emailString,
+                    hintText: AppStrings.of(context).emailString,
+                    controller: _loginController,
                     maxLines: 1,
+                    textType: TextInputType.emailAddress,
                     onChanged: _onChangedText,
-                    textInputAction: TextInputAction.done,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(4.0)
-                      ),
-                      labelText: AppStrings.of(context).passwordString,
-                      focusedBorder:OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.yellow, width: 2.0),
-                        borderRadius: BorderRadius.circular(4.0),
-                      ),
-                      // labelStyle: AppTextStyles.textFieldLabel,
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: AppStrings.of(context).passwordString,
-                      suffixIcon: _passwordController.text.isEmpty
-                          ? null
-                          : IconButton(
-                        onPressed: _onClearPassword,
-                        icon: Icon(
-                          Icons.cancel_outlined,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                      ),
-                    ),
+                    validator: validator,
+                    onTap: _onClearLogin,
+                  ),
+                  SizedBox(
+                    height: 15.0,
+                  ),
+                  _utils.createTextField(
+                    context: context,
+                    labelText: AppStrings.of(context).passwordString,
+                    hintText: AppStrings.of(context).passwordString,
+                    controller: _passwordController,
+                    maxLines: 1,
+                    textType: TextInputType.visiblePassword,
+                    onChanged: _onChangedText,
+                    validator: validator,
+                    onTap: _onClearPassword,
                   ),
                   SizedBox(
                     height: 40.0,
                   ),
                   TextButton(
-                    onPressed: () {
-                      // _subscriptionManager.buySubscription(_selectedPlan);
+                    onPressed: () async => {
+                      if (_formKey.currentState!.validate()) {
+                        FocusScope.of(context).requestFocus(FocusNode()),
+                        context.router.push(MainScreenRoute()),
+                      }
                     },
                     style: ButtonStyle(
                         padding: MaterialStateProperty.all(
                             const EdgeInsets.symmetric(vertical: 18)),
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Color(0xFFFFDD00)),
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Color(0xFFFFDD00)),
                         minimumSize: MaterialStateProperty.all<Size>(
                             const Size(double.infinity, 58)),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(100),
-                            ))),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(100),
+                        ))),
                     child: Text(
                       AppStrings.of(context).enterString,
                       // style: AppTextStyles.onboardingContinueButton,
                     ),
                   ),
-                  TextButton(onPressed: () {}, child: Text(AppStrings.of(context).forgetPasswordString)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(AppStrings.of(context).noAccountString),
-                      SizedBox(width: 5.0,),
-                      TextButton(onPressed: () {}, child: Text(AppStrings.of(context).registerString)),
-                    ],)
                 ],
               ),
             ),
@@ -133,7 +112,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         ],
       ),
     );
-
   }
 
   void _onChangedText(String text) {
@@ -142,6 +120,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         // _isSaveButtonEnabled = false;
       }
       // _isSaveButtonEnabled = _controller1.text.isNotEmpty || _controller2.text.isNotEmpty;
+    });
+  }
+
+  void _onClearName() {
+    setState(() {
+      _nameController.clear();
     });
   }
 
@@ -155,5 +139,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     setState(() {
       _passwordController.clear();
     });
+  }
+
+  String? validator(String? text) {
+    if (text == null || text.isEmpty) {
+      return 'Please enter some text';
+    }
+    return null;
   }
 }

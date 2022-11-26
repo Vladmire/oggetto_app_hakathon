@@ -14,5 +14,17 @@
     "fatherNameString": "Father name",
     "locationString": "Location",
     "gradeString": "Grade",
-    "projectString": "Project"
+    "projectString": "Project",
+    "backendString": "Backend",
+    "frontendString": "Frontend",
+    "mobileString": "Mobile",
+    "designString": "Designs",
+    "teamleadingString": "Team Leading",
+    "analyticsString": "Analytics",
+    "accountingString": "Accounting",
+    "hrString": "HR",
+    "techSupportString": "Tech Support",
+    "adsString": "ADS"
+
+
 }

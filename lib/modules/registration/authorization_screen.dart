@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:oggetto_app_hakathon/modules/router/app_router.dart';
 import 'package:oggetto_app_hakathon/utils/images.dart';
 
 import '../../managers/locator.dart';
@@ -21,9 +23,11 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: ListView(
         children: [
+          SizedBox(
+            height: 40.0,
+          ),
           Padding(
             padding: const EdgeInsets.all(50.0),
             child: Image(image: AppAssets.companyLogo.image()),
@@ -34,73 +38,41 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
                 children: [
-                  TextFormField(
+                  _utils.createTextField(
+                    context: context,
+                    labelText: AppStrings.of(context).emailString,
+                    hintText: AppStrings.of(context).emailString,
                     controller: _loginController,
-                    // style: AppTextStyles.inputText,
                     maxLines: 1,
+                    textType: TextInputType.emailAddress,
                     onChanged: _onChangedText,
-                    textInputAction: TextInputAction.done,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(4.0)
-                      ),
-                      labelText: AppStrings.of(context).emailString,
-                      focusedBorder:OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.yellow, width: 2.0),
-                        borderRadius: BorderRadius.circular(4.0),
-                      ),
-                      // labelStyle: AppTextStyles.textFieldLabel,
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: AppStrings.of(context).emailString,
-                      suffixIcon: _loginController.text.isEmpty
-                          ? null
-                          : IconButton(
-                        onPressed: _onClearLogin,
-                        icon: Icon(
-                          Icons.cancel_outlined,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                      ),
-                    ),
+                    validator: validator,
+                    onTap: _onClearLogin,
                   ),
                   SizedBox(
-                    height: 30.0,
+                    height: 15.0,
                   ),
-                  TextFormField(
+                  _utils.createTextField(
+                    context: context,
+                    labelText: AppStrings.of(context).passwordString,
+                    hintText: AppStrings.of(context).passwordString,
                     controller: _passwordController,
-                    // style: AppTextStyles.inputText,
                     maxLines: 1,
+                    textType: TextInputType.visiblePassword,
                     onChanged: _onChangedText,
-                    textInputAction: TextInputAction.done,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(4.0)
-                      ),
-                      labelText: AppStrings.of(context).passwordString,
-                      focusedBorder:OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.yellow, width: 2.0),
-                        borderRadius: BorderRadius.circular(4.0),
-                      ),
-                      // labelStyle: AppTextStyles.textFieldLabel,
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: AppStrings.of(context).passwordString,
-                      suffixIcon: _passwordController.text.isEmpty
-                          ? null
-                          : IconButton(
-                        onPressed: _onClearPassword,
-                        icon: Icon(
-                          Icons.cancel_outlined,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                      ),
-                    ),
+                    validator: validator,
+                    onTap: _onClearPassword,
                   ),
                   SizedBox(
                     height: 40.0,
                   ),
                   TextButton(
-                    onPressed: () {
-                      // _subscriptionManager.buySubscription(_selectedPlan);
+                    onPressed:
+                          () async => {
+                        if (_formKey.currentState!.validate()) {
+                          FocusScope.of(context).requestFocus(FocusNode()),
+                          context.router.push(MainScreenRoute()),
+                        }
                     },
                     style: ButtonStyle(
                         padding: MaterialStateProperty.all(
@@ -111,7 +83,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                             const Size(double.infinity, 58)),
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(100),
+                              borderRadius: BorderRadius.circular(20),
                             ))),
                     child: Text(
                       AppStrings.of(context).enterString,
@@ -124,7 +96,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                     children: [
                     Text(AppStrings.of(context).noAccountString),
                     SizedBox(width: 5.0,),
-                    TextButton(onPressed: () {}, child: Text(AppStrings.of(context).registerString)),
+                    TextButton(onPressed: () => context.router.push(RegistrationScreenRoute()), child: Text(AppStrings.of(context).registerString)),
                   ],)
                 ],
               ),
@@ -155,5 +127,12 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
     setState(() {
       _passwordController.clear();
     });
+  }
+
+  String? validator(String? text) {
+    if (text == null || text.isEmpty) {
+      return 'Please enter some text';
+    }
+    return null;
   }
 }
