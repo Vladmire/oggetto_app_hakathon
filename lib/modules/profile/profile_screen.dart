@@ -181,37 +181,41 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 21.0,
                 ),
                 Wrap(
                   spacing: 15.0,
                   runSpacing: 15.0,
                   children: [
-                    buildFactRect('factText', screenWidth),
-                    buildFactRect('factText', screenWidth),
-                    buildFactRect('factText', screenWidth),
+                    buildFactRect('Рыбак', 'Факт 1', screenWidth),
+                    buildFactRect('Люблю кошек', 'Факт 2', screenWidth),
+                    buildFactRect('Не люблю собак', 'Факт 3', screenWidth),
                     GestureDetector(
-                      onTap: () {},
-                      child: DottedBorder(
-                        color: Color(0xFFEBD12D),
-                        strokeWidth: 1,
-                        radius: Radius.circular(16.0),
-                        child: Container(
-                          width: screenWidth / 2 - 33,
-                          height: (screenWidth / 2 - 33) / 2,
-                          child: Center(
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text('Добавить факт о себе', textAlign: TextAlign.center,),
+                        onTap: () {},
+                        child: DottedBorder(
+                          color: const Color(0xFFEBD12D),
+                          strokeWidth: 1,
+                          borderType: BorderType.RRect,
+                          radius: const Radius.circular(16.0),
+                          child: Container(
+                            width: screenWidth / 2 - 38,
+                            height: (screenWidth / 2 - 38) / 2,
+                            child: const Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Добавить факт о себе',
+                                  textAlign: TextAlign.center,
+                                  style: AppTextStyles.factTitle,
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      )
-                    )
+                        ))
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 21.0,
                 ),
               ],
@@ -222,13 +226,13 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget buildFactRect(String factText, double screenWidth) {
+  Widget buildFactRect(String factText, String factNumber, double screenWidth) {
     return Container(
       width: screenWidth / 2 - 33,
       height: (screenWidth / 2 - 33) / 2,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.0),
-        border: Border.all(color: Color(0xFFEBD12D)),
+        border: Border.all(color: const Color(0xFFEBD12D)),
       ),
       child: Column(
         children: [
@@ -236,11 +240,17 @@ class ProfileScreen extends StatelessWidget {
             alignment: Alignment.topLeft,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('Fact 1'),
+              child: Text(
+                factNumber,
+                style: AppTextStyles.factSubtitle,
+              ),
             ),
           ),
           Center(
-            child: Text(factText),
+            child: Text(
+              factText,
+              style: AppTextStyles.factTitle,
+            ),
           ),
         ],
       ),

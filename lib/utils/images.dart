@@ -4,6 +4,7 @@ enum AppAssets {
   appIcon,
   companyLogo,
   profile,
+  greetings,
 
 }
 
@@ -16,6 +17,8 @@ extension AssetImageExt on AppAssets {
         return const AssetImage('lib/assets/images/company_logo@3x.png');
       case AppAssets.profile:
         return const AssetImage('lib/assets/images/profile@3x.png');
+      case AppAssets.greetings:
+        return const AssetImage('lib/assets/images/greetings@3x.png');
     }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import '../../managers/locator.dart';
+import '../../styles/styles.dart';
 import '../../utils/custom_widget_utils.dart';
 
 import '../../utils/images.dart';
@@ -23,22 +24,22 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: ListView(
         children: [
           const SizedBox(
             height: 40.0,
           ),
-          Padding(
-            padding: const EdgeInsets.all(50.0),
-            child: Image(image: AppAssets.companyLogo.image()),
-          ),
+          Image(image: AppAssets.greetings.image(), height: screenWidth - 90,),
           Form(
             key: _formKey,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
                 children: [
+                  const Text('Добро пожаловать!', style: AppTextStyles.greetingTitle,),
+                  SizedBox(height: 25.0,),
                   _utils.createTextField(
                     context: context,
                     labelText: AppStrings.of(context).nameString,

@@ -69,5 +69,24 @@ class AppTextStyles {
     color: Color(0xFF393000),
   );
 
+  static const factSubtitle = TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: 12.0,
+    letterSpacing: 0.5,
+    color: Color(0xFF393000),
+  );
+  static const factTitle = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 14.0,
+    letterSpacing: 0.5,
+    color: Color(0xFF393000),
+  );
+  static const greetingTitle = TextStyle(
+    fontWeight: FontWeight.w700,
+    fontSize: 30.0,
+    letterSpacing: 0.5,
+    color: Color(0xFF6D5E00),
+  );
+
 
 }
