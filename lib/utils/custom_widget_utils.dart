@@ -6,14 +6,15 @@ import '../styles/styles.dart';
 
 class CustomWidgetUtils {
 
-  Widget createTextField({ required BuildContext context,
+  Widget createTextField({
+    required BuildContext context,
     required String labelText,
     required String hintText,
+    required TextEditingController controller,
     bool? autoFocus,
     FocusNode? focusNode,
     int? maxLines,
     TextInputType? textType,
-    required TextEditingController controller,
     ValueSetter<String>? onChanged,
     String? Function(String?)? validator,
     VoidCallback? onTap,

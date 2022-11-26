@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:oggetto_app_hakathon/models/enums.dart';
 
@@ -5,6 +6,7 @@ part 'user_model.g.dart';
 
 @JsonSerializable()
 class UserModel {
+  UserRole role;
   String login;
   String password;
   String name;
@@ -19,6 +21,7 @@ class UserModel {
   String? thirdFact;
 
   UserModel({
+    required this.role,
     required this.login,
     required this.password,
     required this.name,

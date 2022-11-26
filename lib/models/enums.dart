@@ -18,3 +18,8 @@ enum WorkGrade {
   middle,
   senior,
 }
+
+enum UserRole {
+  regularUser,
+  admin,
+}

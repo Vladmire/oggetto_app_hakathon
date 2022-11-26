@@ -2,6 +2,17 @@
     "peopleString": "People",
     "gamesString": "Games",
     "profileString": "Profile",
-    "oggettoNameString": "Oggetto"
-
+    "oggettoNameString": "Oggetto",
+    "emailString": "Email",
+    "passwordString": "Password",
+    "enterString": "Enter",
+    "forgetPasswordString": "Forget password?",
+    "noAccountString": "No account?",
+    "registerString": "Register!",
+    "nameString": "Name",
+    "surnameString": "Surname",
+    "fatherNameString": "Father name",
+    "locationString": "Location",
+    "gradeString": "Grade",
+    "projectString": "Project"
 }

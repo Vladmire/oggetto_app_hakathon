@@ -13,7 +13,7 @@ extension AssetImageExt on AppAssets {
       case AppAssets.appIcon:
         return const AssetImage('lib/assets/images/google@3x.png');
       case AppAssets.companyLogo:
-        return const AssetImage('lib/assets/images/companyLogo.png');
+        return const AssetImage('lib/assets/images/company_logo@3x.png');
       case AppAssets.profile:
         return const AssetImage('lib/assets/images/profile@3x.png');
     }
