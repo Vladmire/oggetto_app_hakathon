@@ -128,7 +128,7 @@ class ProfileScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         const Text(
-                          'Frontend Developer',
+                          'Фронтенд разработчик',
                           style: AppTextStyles.profileSectionTitle,
                         ),
                         const SizedBox(
@@ -138,12 +138,12 @@ class ProfileScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: const [
                             Text(
-                              'Grade',
+                              'Грейд',
                               style: AppTextStyles.profileSubsectionTitle,
                             ),
                             Chip(
                               label: Text(
-                                'Senior',
+                                'Сеньор',
                                 style: AppTextStyles.profileChipText,
                               ),
                               labelPadding: EdgeInsets.symmetric(
@@ -164,7 +164,7 @@ class ProfileScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: const [
                             Text(
-                              'Project',
+                              'Проект',
                               style: AppTextStyles.profileSubsectionTitle,
                             ),
                             Chip(
@@ -232,7 +232,7 @@ class ProfileScreen extends StatelessWidget {
       height: (screenWidth / 2 - 33) / 2,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.0),
-        border: Border.all(color: const Color(0xFFEBD12D)),
+        border: Border.all(color: const Color(0xFFEBD12D), width: 2),
       ),
       child: Column(
         children: [

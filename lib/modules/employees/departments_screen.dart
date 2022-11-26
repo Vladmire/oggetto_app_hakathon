@@ -4,10 +4,26 @@ import 'package:oggetto_app_hakathon/models/enums.dart';
 import 'package:oggetto_app_hakathon/modules/router/app_router.dart';
 import 'package:oggetto_app_hakathon/utils/images.dart';
 
+import '../../managers/locator.dart';
+import '../../managers/users_manager.dart';
+import '../../utils/custom_widget_utils.dart';
 import '../../utils/localized_strings.dart';
 
-class DepartmentsScreen extends StatelessWidget {
+class DepartmentsScreen extends StatefulWidget {
   const DepartmentsScreen({Key? key}) : super(key: key);
+
+  @override
+  State<DepartmentsScreen> createState() => _DepartmentsScreenState();
+}
+
+class _DepartmentsScreenState extends State<DepartmentsScreen> {
+  final CustomWidgetUtils _utils = locator<CustomWidgetUtils>();
+
+  final UsersManager _usersManager = locator<UsersManager>();
+
+  final TextEditingController _controller = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +42,58 @@ class DepartmentsScreen extends StatelessWidget {
             .of(context)
             .oggettoNameString),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 28.0),
-        child: ListView(
-          children: [
-            Wrap(
-              alignment: WrapAlignment.center,
-              spacing: 15.0,
-              runSpacing: 15.0,
-              children: _buildDepartments(width: width, context: context),
+      body: Column(
+        children: [
+          Padding(
+            padding:
+            const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+            child: Form(
+              key: _formKey,
+              child: TextFormField(
+                controller: _controller,
+                // style: AppTextStyles.inputText,
+                maxLines: 1,
+                onChanged: _onChangedText,
+                textInputAction: TextInputAction.done,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(4.0)
+                  ),
+                  labelText: AppStrings.of(context).locationString,
+                  focusedBorder:OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.yellow, width: 2.0),
+                    borderRadius: BorderRadius.circular(4.0),
+                  ),
+                  // labelStyle: AppTextStyles.textFieldLabel,
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  hintText: AppStrings.of(context).locationString,
+                  suffixIcon: _controller.text.isEmpty
+                      ? null
+                      : IconButton(
+                    onPressed: _onClearTap,
+                    icon: Icon(
+                      Icons.cancel_outlined,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                ),
+              ),
             ),
-          ],
-        ),
+          ),
+          Text('title'),
+          Expanded(
+            child: ListView(
+              children: [
+                Wrap(
+                  alignment: WrapAlignment.center,
+                  spacing: 15.0,
+                  runSpacing: 15.0,
+                  children: _buildDepartments(width: width, context: context),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
@@ -155,6 +211,20 @@ class DepartmentsScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  void _onChangedText(String text) {
+    setState(() {
+      //todo: add search in models
+    });
+  }
+
+  void _onClearTap() {
+    setState(
+          () {
+        _controller.clear();
+      },
     );
   }
 }
