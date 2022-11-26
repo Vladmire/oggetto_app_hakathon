@@ -60,9 +60,13 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     EmployeesScreenRoute.name: (routeData) {
+      final args = routeData.argsAs<EmployeesScreenRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const EmployeesScreen(),
+        child: EmployeesScreen(
+          department: args.department,
+          key: args.key,
+        ),
       );
     },
     DetailsScreenRoute.name: (routeData) {
@@ -284,14 +288,36 @@ class DepartmentsScreenRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [EmployeesScreen]
-class EmployeesScreenRoute extends PageRouteInfo<void> {
-  const EmployeesScreenRoute()
-      : super(
+class EmployeesScreenRoute extends PageRouteInfo<EmployeesScreenRouteArgs> {
+  EmployeesScreenRoute({
+    required DepartmentType department,
+    Key? key,
+  }) : super(
           EmployeesScreenRoute.name,
           path: 'employees',
+          args: EmployeesScreenRouteArgs(
+            department: department,
+            key: key,
+          ),
         );
 
   static const String name = 'EmployeesScreenRoute';
+}
+
+class EmployeesScreenRouteArgs {
+  const EmployeesScreenRouteArgs({
+    required this.department,
+    this.key,
+  });
+
+  final DepartmentType department;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'EmployeesScreenRouteArgs{department: $department, key: $key}';
+  }
 }
 
 /// generated route for

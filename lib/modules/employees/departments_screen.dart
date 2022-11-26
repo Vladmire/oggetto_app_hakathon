@@ -47,70 +47,70 @@ class DepartmentsScreen extends StatelessWidget {
     for (var element in DepartmentType.values) {
       switch (element) {
         case DepartmentType.backend:
-          Widget item = _buildDepartment(onTap: () {},
+          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
             title: AppStrings.of(context).backendString,);
           items.add(item);
           break;
         case DepartmentType.frontend:
-          Widget item = _buildDepartment(onTap: () {},
+          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
             title: AppStrings.of(context).frontendString,);
           items.add(item);
           break;
         case DepartmentType.mobile:
-          Widget item = _buildDepartment(onTap: () {},
+          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
             title: AppStrings.of(context).mobileString,);
           items.add(item);
           break;
         case DepartmentType.designs:
-          Widget item = _buildDepartment(onTap: () {},
+          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
             title: AppStrings.of(context).designString,);
           items.add(item);
           break;
         case DepartmentType.teamLeading:
-          Widget item = _buildDepartment(onTap: () {},
+          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
             title: AppStrings.of(context).teamleadingString,);
           items.add(item);
           break;
         case DepartmentType.analytics:
-          Widget item = _buildDepartment(onTap: () {},
+          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
             title: AppStrings.of(context).analyticsString,);
           items.add(item);
           break;
         case DepartmentType.accounting:
-          Widget item = _buildDepartment(onTap: () {},
+          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
             title: AppStrings.of(context).accountingString,);
           items.add(item);
           break;
         case DepartmentType.hr:
-          Widget item = _buildDepartment(onTap: () {},
+          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
             title: AppStrings.of(context).hrString,);
           items.add(item);
           break;
         case DepartmentType.techSupport:
-          Widget item = _buildDepartment(onTap: () {},
+          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
             title: AppStrings.of(context).techSupportString,);
           items.add(item);
           break;
         case DepartmentType.ads:
-          Widget item = _buildDepartment(onTap: () {},
+          Widget item = _buildDepartment(onTap: () => context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
             image: AppAssets.companyLogo.image(),
             title: AppStrings.of(context).adsString,);
