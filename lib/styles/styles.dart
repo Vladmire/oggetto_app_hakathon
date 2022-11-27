@@ -93,6 +93,12 @@ class AppTextStyles {
     letterSpacing: 0.5,
     color: Color(0xFF6D5E00),
   );
+  static const departmentNameString = TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: 24.0,
+    letterSpacing: 0.5,
+    color: Color(0xFF6D5E00),
+  );
 
 
 }

@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +15,7 @@ class FirstGameScreen extends StatefulWidget {
 }
 
 class _FirstGameScreenState extends State<FirstGameScreen> {
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -35,7 +38,7 @@ class _FirstGameScreenState extends State<FirstGameScreen> {
             color: const Color(0xFFFFF9ED),
             child: const Center(
               child: Text(
-                'Кто хочет стать...',
+                'Квиз',
                 style: AppTextStyles.profileSectionTitle,
               ),
             ),
@@ -91,7 +94,9 @@ class _FirstGameScreenState extends State<FirstGameScreen> {
                 child: Column(
                   children: [
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFFFEC9F),
                         padding: EdgeInsets.symmetric(vertical: 12.0,),
@@ -134,12 +139,11 @@ class _FirstGameScreenState extends State<FirstGameScreen> {
 
   Widget buildFactRect(
       String factText, String factNumber, double screenWidth, bool answer) {
-    bool isTrue = false;
     return GestureDetector(
       onTap: () {
         setState(() {
           if (answer) {
-            isTrue = true;
+            // isTrue = true;
           }
         });
       },
@@ -149,7 +153,7 @@ class _FirstGameScreenState extends State<FirstGameScreen> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.0),
           border: Border.all(
-              color: isTrue ? Colors.green : const Color(0xFFEBD12D), width: 2),
+              color: const Color(0xFFEBD12D), width: 2),
         ),
         child: Column(
           children: [

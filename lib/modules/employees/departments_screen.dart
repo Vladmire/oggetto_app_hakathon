@@ -113,7 +113,7 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
             onTap: () =>
                 context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
-            image: AppAssets.companyLogo.image(),
+            icon: Icons.dns_outlined,
             title: AppStrings.of(context).backendString,
           );
           items.add(item);
@@ -123,7 +123,7 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
             onTap: () =>
                 context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
-            image: AppAssets.companyLogo.image(),
+            icon: Icons.monitor_outlined,
             title: AppStrings.of(context).frontendString,
           );
           items.add(item);
@@ -133,7 +133,7 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
             onTap: () =>
                 context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
-            image: AppAssets.companyLogo.image(),
+            icon: Icons.smartphone_outlined,
             title: AppStrings.of(context).mobileString,
           );
           items.add(item);
@@ -143,7 +143,7 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
             onTap: () =>
                 context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
-            image: AppAssets.companyLogo.image(),
+            icon: Icons.design_services_outlined,
             title: AppStrings.of(context).designString,
           );
           items.add(item);
@@ -153,7 +153,7 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
             onTap: () =>
                 context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
-            image: AppAssets.companyLogo.image(),
+            icon: Icons.star_outline_outlined,
             title: AppStrings.of(context).teamleadingString,
           );
           items.add(item);
@@ -163,7 +163,7 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
             onTap: () =>
                 context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
-            image: AppAssets.companyLogo.image(),
+            icon: Icons.auto_graph_outlined,
             title: AppStrings.of(context).analyticsString,
           );
           items.add(item);
@@ -173,7 +173,7 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
             onTap: () =>
                 context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
-            image: AppAssets.companyLogo.image(),
+            icon: Icons.account_balance_outlined,
             title: AppStrings.of(context).accountingString,
           );
           items.add(item);
@@ -183,7 +183,7 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
             onTap: () =>
                 context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
-            image: AppAssets.companyLogo.image(),
+            icon: Icons.search_outlined,
             title: AppStrings.of(context).hrString,
           );
           items.add(item);
@@ -193,7 +193,7 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
             onTap: () =>
                 context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
-            image: AppAssets.companyLogo.image(),
+            icon: Icons.support_agent_outlined,
             title: AppStrings.of(context).techSupportString,
           );
           items.add(item);
@@ -203,7 +203,7 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
             onTap: () =>
                 context.router.push(EmployeesScreenRoute(department: element)),
             width: width,
-            image: AppAssets.companyLogo.image(),
+            icon: Icons.ads_click_outlined,
             title: AppStrings.of(context).adsString,
           );
           items.add(item);
@@ -216,7 +216,7 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
   Widget _buildDepartment({
     required Function() onTap,
     required double width,
-    required AssetImage image,
+    required IconData icon,
     required String title,
   }) {
     return GestureDetector(
@@ -236,11 +236,11 @@ class _DepartmentsScreenState extends State<DepartmentsScreen> {
             child: Column(
               children: [
                 Expanded(
-                  child: Image(image: image),
+                  child: Icon(icon, size: 40,),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: Text(title),
+                  child: Text(title, textAlign: TextAlign.center,),
                 )
               ],
             ),

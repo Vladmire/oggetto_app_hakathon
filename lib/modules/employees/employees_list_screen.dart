@@ -106,16 +106,23 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
     }
     List<Widget> listTiles = [];
     for (var element in departmentUsers) {
-      Widget listTile = ListTile(
-
-        onTap: () => context.router.push(DetailsScreenRoute(userModel: element)),
-        leading: CircleAvatar(
-          backgroundImage: AppAssets.appIcon.image(),
-          radius: 28.0,
+      Widget listTile = Padding(
+        padding: const EdgeInsets.symmetric(vertical: 4.0),
+        child: ListTile(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25.0),
+          ),
+          contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+          onTap: () => context.router.push(DetailsScreenRoute(userModel: element)),
+          leading: CircleAvatar(
+            backgroundImage: AppAssets.profile.image(),
+            radius: 28.0,
+          ),
+          title: Text(element.name),
+          subtitle: Text(element.department.toString()),
+          tileColor: Color(0xFFFFF9ED),
+          trailing: Image(image: element.image, width: 35, height: 35,),
         ),
-        title: Text(element.name),
-        subtitle: Text(element.department.toString()),
-        tileColor: Color(0xFFFFF9ED),
       );
       listTiles.add(listTile);
     }

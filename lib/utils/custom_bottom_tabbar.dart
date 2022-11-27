@@ -41,7 +41,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         BottomBarItem(
-                          icon: Icons.supervised_user_circle_outlined,
+                          icon: Icons.people_alt_rounded,
                           label: AppStrings.of(context).peopleString,
                           selected: widget.currentIndex == 0,
                           onPressed: () {

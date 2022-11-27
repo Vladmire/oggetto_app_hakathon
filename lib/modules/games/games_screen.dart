@@ -31,19 +31,19 @@ class GamesScreen extends StatelessWidget {
                 _buildGameCard(
                   onTap: () => context.router.push(FirstGameScreenRoute()),
                   width: width,
-                  image: AppAssets.companyLogo.image(),
-                  title: 'Кто хочет стать ...',
+                  image: AppAssets.firstGame.image(),
+                  title: 'Квиз',
                 ),
                 _buildGameCard(
                   onTap: () => context.router.push(SecondGameScreenRoute()),
                   width: width,
-                  image: AppAssets.companyLogo.image(),
+                  image: AppAssets.secondGame.image(),
                   title: 'Oggintter',
                 ),
                 _buildGameCard(
                   onTap: () => context.router.push(ThirdGameScreenRoute()),
                   width: width,
-                  image: AppAssets.companyLogo.image(),
+                  image: AppAssets.thirdGame.image(),
                   title: 'Соответствия',
                 ),
               ],

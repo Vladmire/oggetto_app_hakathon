@@ -35,15 +35,18 @@ class _SecondGameScreenState extends State<SecondGameScreen> {
             onDismissed: (direction) {
               // Remove the item from the data source.
               setState(() {
-                items.removeAt(index);
-                index += 1;
+                if (index < 1) {
+                  items.removeAt(index);
+                  index += 1;
+                }
               });
 
               // Then show a snackbar.
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text('dismissed')));
             },
-            background: Container(color: Colors.red),
+            background: Container(color: Colors.green),
+            secondaryBackground: Container(color: Colors.red,),
             key: Key(items[0]),
             child: Column(
               children: [
@@ -83,6 +86,16 @@ class _SecondGameScreenState extends State<SecondGameScreen> {
                     'Любит ли Филатов Денис Обниматься?',
                     textAlign: TextAlign.center,
                     style: AppTextStyles.gameQuestionText,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(onPressed: () {}, icon: Image(image: AppAssets.redArrow.image(),), iconSize: 120,),
+                      IconButton(onPressed: () {}, icon: Image(image: AppAssets.greenArrow.image(),), iconSize: 120,),
+                    ],
                   ),
                 ),
               ],
